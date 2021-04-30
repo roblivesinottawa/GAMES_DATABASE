@@ -29,11 +29,13 @@ connection.connect(err => {
 connection.connect(err => {
     err ? err : console.log('Connected to MySQl Server!')
     let sql = `CREATE TABLE games_table (
-                id INT(11) NOT NULL,
+                id INT NOT NULL AUTO_INCREMENT,
                 name VARCHAR(100) COLLATE utf8mb4_unicode_ci NOT NULL,
                 publisher VARCHAR(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+                PRIMARY KEY(id),
                 created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                
             )`;
             connection.query(sql, (err, result) => err ? err : console.log(`TABLE CREATED!`))
 })
